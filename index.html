@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Analysis – Wordsworth</title>
+
+    <style>
+        /* ---------- COLOR PALETTE ---------- */
+        :root {
+            --blue: #b9ddff;
+            --green: #d2f8d0;
+            --yellow: #fff7b1;
+            --brown: #6b4f36;
+            --white: #ffffff;
+        }
+
+        /* ---------- GLOBAL STYLING ---------- */
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            background: linear-gradient(to bottom, var(--blue), var(--green));
+            color: var(--brown);
+            line-height: 1.7;
+            animation: fadeIn 1.2s ease;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        /* ---------- NAV BAR ---------- */
+        nav {
+            background: var(--yellow);
+            border-bottom: 4px solid var(--brown);
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .brand {
+            font-weight: bold;
+            color: var(--brown);
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--brown);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile menu button */
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--brown);
+        }
+
+        /* Mobile dropdown */
+        @media (max-width: 700px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: var(--yellow);
+                width: 100%;
+                margin-top: 10px;
+                border-top: 2px solid var(--brown);
+                padding: 10px 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            background: var(--blue);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 7px solid var(--brown);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* Floating cloud animation */
+        .cloud {
+            position: absolute;
+            width: 140px;
+            height: 60px;
+            background: white;
+            border-radius: 50px;
+            filter: blur(1px);
+            opacity: 0.8;
+            animation: float 14s infinite linear;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: "";
+            position: absolute;
+            background: white;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud::after {
+            top: -15px;
+            left: 60px;
+        }
+
+        .cloud1 {
+            top: 20px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .cloud2 {
+            top: 80px;
+            left: -200px;
+            transform: scale(1.2);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateX(-200px);
+            }
+
+            to {
+                transform: translateX(120%);
+            }
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .analysis-box {
+            background: var(--yellow);
+            border-left: 10px solid var(--brown);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            transition: 0.3s ease;
+        }
+
+        .analysis-box:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+            background: #fff9c7;
+        }
+
+        h2 {
+            color: var(--brown);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--yellow);
+            border-top: 5px solid var(--brown);
+            margin-top: 60px;
+            font-weight: bold;
+        }
+
+        /* ---------- ANIMATIONS ---------- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="brand">Wordsworth Project</div>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+        <ul id="nav-links">
+            <!-- <li><a href="homepage.html">Home</a></li> -->
+            <li><a href="index.html">Historical Analysis</a></li>
+            <li><a href="literary.html">Literary Analysis</a></li>
+            <li><a href="biblography.html">Works Cited</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-links").classList.toggle("show");
+        }
+    </script>
+
+    <!-- Floating Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Historical Analysis</h1>
+        <p>William Wordsworth – <em>I Wandered Lonely as a Cloud</em></p>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-wrapper">
+        <div class="analysis-box">
+            <h2>Historical Analysis</h2>
+            <p>
+                William Wordsworth's poem "I Wandered Lonely as a Cloud" was written in 1804 and first published in
+                1807,
+                during a period of significant political and cultural upheaval in Europe. Although the poem itself is a
+                quiet
+                reflection of nature, it emerged during the late 18th and early 19th centuries, which were drastically
+                shaped
+                by the chaos of the French Revolution and the rise of Romanticism.
+            </p>
+
+            <hr>
+
+            <p>
+                In 1787, he entered college, and it was during those coming-of-age years that the
+                French Revolution,
+                one of the most influential transformations in European history, occurred in 1789.
+            </p>
+
+            <p>
+                Wordsworth first traveled to France on a walking tour in 1790, arriving during
+                the Revolution’s hopeful,
+                idealistic phase. During this period, he was immediately drawn to the Revolution’s Enlightenment ideals
+                of liberty,
+                equality, and the challenge to centuries of monarchy. This blend of political excitement and the natural
+                landscapes
+                of France and the Alps had a significant influence on his poetry and political beliefs.
+            </p>
+
+            <p>
+                However, as the Revolution descended into violence during the Reign of Terror,
+                Wordsworth became deeply
+                disillusioned with revolutionary ideals. The Reign of Terror was backed by the working poor against
+                aristocratic
+                counterrevolutionaries, which offended Wordsworth’s middle-class ideals and need for reform. He found
+                the ensuing
+                violence and extremism shocking and ultimately viewed the Revolution as a move from “respectable”
+                beginnings to
+                “wickedness.”
+            </p>
+
+            <p>
+                In his <em>Letter to the Bishop of Llandaff</em>, he objects to the violence and bloodshed of the French
+                Revolution, writing:
+                “They [thinking and feeling men] are sorry that the prejudice and weakness of mankind have made it
+                necessary to force
+                an individual into an unnatural situation, which requires more than human talents and human virtues.”
+                This passage shows Wordsworth’s disillusionment with the Revolution’s extremism and his concern for
+                individuals trapped
+                by circumstances beyond their control. This collapse of his hopes turned him away from politics and into
+                themes of memory,
+                imagination, and emotion. Nature became a form of refuge for Wordsworth.
+            </p>
+
+            <hr>
+
+            <p>
+                By the time he wrote “I Wandered Lonely as a Cloud,” Europe was again in turmoil under Napoleon, and
+                Wordsworth’s belief
+                in nature became his escape to heal and stabilize.
+            </p>
+
+            <hr>
+
+            <p>
+                This historical period also marked the rise of Romanticism, which rejected Enlightenment rationalism and
+                emphasized
+                emotion, imagination, and the natural world. As Wordsworth rejected the French Revolution, he also
+                rejected Enlightenment
+                ideals and instead embraced Romantic ideals, becoming a central figure in defining
+                Romanticism—especially through his
+                devotion to ordinary subjects, his connection to nature, and his personal emotional experience.
+            </p>
+
+            <p>
+                “I Wandered Lonely as a Cloud” embodies these principles by focusing not on political events but on the
+                personal encounter
+                between the writer and the natural world.
+            </p>
+
+            <hr>
+
+            <p>
+                When Wordsworth’s collection <em>Poems, in Two Volumes</em>
+                (1807), which included
+                “I Wandered Lonely as a Cloud,” was first published, it was met with harsh criticism. The most
+                influential critic of the
+                Romantic era was Francis Jeffery, who used the <em>Edinburgh Review</em> to attack Wordsworth’s poetic
+                language.
+            </p>
+
+            <p>
+                In 1807, Jeffery directly targeted Wordsworth, opening his review with: “If the printing of such trash
+                as this be not
+                felt as an insult on the public taste, we are afraid it cannot be insulted” (<em>The Critical Reception
+                    1807–1818</em>).
+                Jeffery’s main complaint was that Wordsworth wrote “upon principle and system,” arguing that
+                Wordsworth’s attempt to use
+                ordinary subjects and language resulted not in authenticity, but in forced simplicity.
+            </p>
+
+            <p>
+                This early reception positioned Wordsworth as a controversial figure. Yet, at the same time, others
+                began to recognize the
+                originality and emotional depth of his work. Ironically, the Romantic qualities—simplicity, emotional
+                sincerity, and the
+                spiritual power of nature—that Jeffery condemned would later become core Romantic values, inspiring
+                generations of poets
+                to value ordinary life and the beauty of the natural world.
+            </p>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Wordsworth Project
+    </footer>
+
+</body>
+
+</html>

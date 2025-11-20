@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Analysis – Wordsworth</title>
+
+    <style>
+        :root {
+            --blue: #b9ddff;
+            --green: #d2f8d0;
+            --yellow: #fff7b1;
+            --brown: #6b4f36;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            background: linear-gradient(to bottom, var(--blue), var(--green));
+            color: var(--brown);
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--blue);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 7px solid var(--brown);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: var(--yellow);
+            border-bottom: 4px solid var(--brown);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .brand {
+            font-weight: bold;
+            color: var(--brown);
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--brown);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--brown);
+        }
+
+        @media (max-width: 700px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: var(--yellow);
+                width: 100%;
+                margin-top: 10px;
+                border-top: 2px solid var(--brown);
+                padding: 10px 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .dropdown-card {
+            background: var(--yellow);
+            border-left: 10px solid var(--brown);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            transition: 0.3s ease;
+        }
+
+        .dropdown-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+            background: #fff9c7;
+        }
+
+        .dropdown-btn {
+            width: 100%;
+            background: var(--brown);
+            color: var(--yellow);
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            outline: none;
+            transition: 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-btn:hover {
+            background: #52371e;
+        }
+
+        .dropdown-content {
+            display: none;
+            padding: 15px 20px;
+            margin-top: 5px;
+            background: var(--yellow);
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--yellow);
+            border-top: 5px solid var(--brown);
+            margin-top: 60px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="brand">Wordsworth Project</div>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <ul id="nav-links">
+            <!-- <li><a href="homepage.html">Home</a></li> -->
+            <li><a href="index.html">Historical Analysis</a></li>
+            <li><a href="literary.html">Literary Analysis</a></li>
+            <li><a href="biblography.html">Works Cited</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("nav-links").classList.toggle("show");
+        }
+
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Literary Analysis</h1>
+        <p>William Wordsworth – <em>I Wandered Lonely as a Cloud</em></p>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-wrapper">
+        <div class="dropdown-card">
+            <button class="dropdown-btn" onclick="toggleDropdown('title1')">Title</button>
+            <div class="dropdown-content" id="title1">
+                <p>The title, “I Wandered Lonely as a Cloud” suggests that this poem is about feeling alone or lost,
+                    like a solitary cloud floating in the sky. The title gives the reader the feeling of loneliness or
+                    wonder, explaining the emotions that nature inspires in people. The title sets up the central idea
+                    of the poem, that nature doesn’t just describe the outside world but rather it transforms how we
+                    feel and understand ourselves. </p>
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('paraphrase')">Paraphrase</button>
+            <div class="dropdown-content" id="paraphrase">
+                <p>The speaker begins by describing himself wandering around feeling lonely, like a single cloud
+                    drifting over vast hills and valleys. His mood suddenly shifts when he sees almost one-thousand
+                    golden daffodils dancing and fluttering in the breeze beside a lake. The flowers seem endless and
+                    sparkle so brightly that they outshine the waves beside them. This sight fills the speaker with
+                    happiness and amazement. When he later arrives home, he is reminded of the beautiful daffodils and
+                    feels happy and peaceful once again. This vision of nature brings him comfort, even when he isn’t
+                    physically present to observe it. </p>
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('connotation')">Connotation</button>
+            <div class="dropdown-content" id="connotation">
+                <p>
+                    1. “Lonely as a cloud” (simile): This phrase is repeated in the title and in the first line of the
+                    poem. It draws a relationship between the speaker and the cloud, explaining that the speaker is
+                    lonely and in solitude, much like a cloud. This explains to the reader the speaker’s state of mind
+                    at the beginning of the poem, setting up the main shift in the poem – from sadness to happiness.
+                </p>
+
+                <p>
+                    2. “They [daffodils] stretched in never-ending line” (imagery): This image helps the reader picture
+                    the vast abundance of the daffodils, creating an image of the grandeur of the daffodils in the
+                    reader’s mind.
+                </p>
+
+                <p>
+                    3. “Tossing their [daffodils] heads sprightly dance.” (personification): This statement makes the
+                    daffodil’s presence alive and beautiful because of their ability to steal the speaker’s attention
+                    through their spirited dance. This is important because the role that the daffodils play in this
+                    poem is a direct contrast to gloomy clouds, and by portraying them as confident, the reader can
+                    understand the abrupt change in mood of the speaker.
+                </p>
+
+                <p>
+                    4. “The waves beside them [daffodils] danced; but they [daffodils] / Out-did the sparkling waves in
+                    glee:” (personification): This adds to the reader’s perceived idea of the personality of the
+                    daffodils. Subconsciously, we view waves as dazzling and grand, and since the daffodils are
+                    outshining those waves, the reader can understand the sheer scale of the impact they had on the
+                    speaker.
+                </p>
+
+                <p>
+                    5. Rhyming: The final word of the last two lines of every stanza rhymes, giving each stanza a clean
+                    ending before transitioning into the next, creating a steady rhythm while reading. A prominent theme
+                    in the poem is tranquility, and having a smooth reading experience adds to that feeling.
+                </p>
+
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('attitude')">Attitude</button>
+            <div class="dropdown-content" id="attitude">
+                <p>The tone of the poem starts as lonely and absent, with the speaker describing his state of mind as
+                    floating over hills and valleys. However, after the speaker sees the daffodils, the tone of the poem
+                    quickly becomes joyful and amazed, showing his appreciation for the beauty of nature. The tone of
+                    the poem tells a story; it shows how the speaker can pull himself out of sorrow by the happy
+                    memories of nature. </p>
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('shifts')">Shifts</button>
+            <div class="dropdown-content" id="shifts">
+                <p>The main shift in this poem is the change of the speaker’s mood from loneliness to joy. In the
+                    beginning, the speaker is “lonely as a cloud”, but after seeing the daffodils, his mood transforms
+                    to happiness and delight. </p>
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('title2')">Title</button>
+            <div class="dropdown-content" id="title2">
+                <p>While my initial interpretation of the title remains correct, there is so much more to the poem
+                    than just loneliness. The poem begins with that loneliness, but later shifts to happiness and joy,
+                    which is reflected by the use of the past tense in the title, showing how the speaker no longer
+                    feels lonely. </p>
+            </div>
+
+            <button class="dropdown-btn" onclick="toggleDropdown('theme')">Theme</button>
+            <div class="dropdown-content" id="theme">
+                <p>
+                    William Wordsworth’s “I Wandered Lonely as a Cloud” is an iconic poem of the Romantic era, exploring
+                    the emotional depth and relationship between nature and how it shapes people’s outlooks on life.
+                    This poem was inspired by a real experience on April 15th, 1802, when Wordsworth and his sister
+                    Dorothy came across a “long belt” of daffodils in the Lake District. This moment deeply moved him
+                    and helped spark the creation of this poem. Wordsworth’s poem explores his emotions, ranging from
+                    loneliness to happiness, and describes how a simple encounter with nature can have a profound
+                    psychological impact.
+                </p>
+
+                <p>
+                    The poem opens with a simile, comparing the speaker’s state of mind to a cloud drifting solemnly
+                    above the landscape. This establishes an emotional detachment and physical separation from reality,
+                    making the reader feel the same sense of melancholy that the speaker feels. However, this emotion
+                    quickly switches when he encounters a vast group of beautiful golden daffodils stretching out for
+                    what seems like miles beside the lake. The contrast between the emotional detachment of a cloud and
+                    the dancing beauty of daffodils illustrates how a simple moment can completely alter someone’s
+                    worldview. This is important because it captures Wordsworth’s central belief that nature can awaken
+                    emotions in people who feel lonely or numb.
+                </p>
+
+                <p>
+                    Wordsworth describes daffodils not as flowers, but as individual joyous souls with an almost
+                    human-like presence. The daffodils are described as “dancing and tossing their heads,” giving them a
+                    confident and carefree personality. By comparing the daffodils to stars, “continuous as the stars
+                    that shine,” the speaker suggests that the daffodils possess a celestial quality, thereby elevating
+                    the reader's perception of them into something more otherworldly and awe-inspiring. This goes hand
+                    in hand with the impact that the flowers have; the mere sight of these flowers is enough to draw the
+                    speaker out of his sorrow.
+                </p>
+
+                <p>
+                    The most prevalent element of this poem is the shift in tone from loneliness to joy. The last stanza
+                    of this poem most effectively demonstrates this shift: “In a vacant or pensive mood, / They flash
+                    upon that inward eye / And then my heart with pleasure fills, / And dances with the daffodils.” The
+                    speaker is recounting his emotions after observing the flowers. He sits vacantly at home, feeling
+                    like a lonely cloud, until he remembers the memory of the dancing flowers, and then his heart fills
+                    with pleasure and joy. This moment illustrates Wordsworth’s belief that nature can have a profound
+                    impact on a person's mood. It also reinforces the idea that poetry comes from revisiting simple
+                    personal experiences rather than grand events.
+                </p>
+
+                <p>
+                    The poem’s rhythm also reinforces its themes. The poem follows a gentle rhyming pattern, creating a
+                    smooth reading flow that evokes feelings of tranquility and calm within the reader. By knowing what
+                    to expect in the following line, reading the poem relaxes the reader, similarly to how the sight of
+                    the daffodils relaxed the speaker. Wordsworth believed that nature has the power to heal, and by
+                    providing the same feelings in the reader, Wordsworth was able to communicate the experiences of the
+                    speaker effectively.
+                </p>
+
+                <p>
+                    Ultimately, “I Wandered Lonely as a Cloud” is both a celebration of the beauty of nature and an
+                    exploration of its vast emotional and physical impacts. Wordsworth suggests that even small moments
+                    can have profound impacts in moments of sadness or detachment. By using vivid imagery and flowing
+                    language, this poem aligns nature with a sense of joy and spirituality, describing it as a living,
+                    breathing soul rather than just a backdrop.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Wordsworth Project
+    </footer>
+
+</body>
+
+</html>
